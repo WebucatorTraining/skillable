@@ -12,6 +12,14 @@ This lab provides you with a license to Microsoft Office. Follow these steps to 
     ![Click Username](images/office-account-sign-in-username.png)
     The field should get populated.
 9. Repeat the same for the password:
-    ![Click Username](images/office-account-sign-in-password.png)
+    ![Click Password](images/office-account-sign-in-password.png)
     Again, the field should get populated.
-10. 
+10. On the **Stay signed in to all your apps** dialog, press **OK**.
+11. You should get a message saying **You're all set!**. Click **Done**.
+12. If you get a dialog that says **Office has been updated**, click **Close**.
+13. Click the **Activate Product** button:
+    ![Activate Product](images/office-activate-product.png)
+14. Accept the license agreement again.
+15. Office should now be activated. Close and reopen the software to update.
+
+You should now be able to use all Office products in the lab!
