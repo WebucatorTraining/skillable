@@ -1,0 +1,366 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+	<title>Module 7: Labs</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" type="text/css" href="stylesheet.css" />
+</head>
+<body class="calibre">
+	<p id="id_Toc144885899" class="block_7">Lab 4 – Designing a data model</p>
+	<p class="block_"><img src="images/image-105.png" alt="Image" class="calibre138" /></p>
+	<p class="block_">In this lab, we will be exploring our data readiness and whether it is suitable for answering our
+		grain statements. For example, are our columns in the right format to be presented in our reports, do we have all the
+		right data, and will we be able to interact with our data as we expect to? We will discover grey areas in our data and
+		how to use DAX to calculate new information to plug those gaps. There will be other issues with our model too but as
+		we will learn, Power BI Desktop has many aces up its sleeve which can resolve our issues.</p>
+	<p class="block_">For this exercise you will need to open your <b class="calibre6">House Rules Sales Analysis</b>
+		project file which was completed in Lab 3. If you did not finish the last lab, we have a completed file for you to
+		continue from. Simply open your download pack, and open the folders <b class="calibre6">Completed Labs </b>&gt; <b
+			class="calibre6">Lab 3 – Queries</b> then open the PBIX file. </p>
+	<p id="id_Toc144885900" class="block_14">Exercise 1 – Hide and format table columns</p>
+	<p class="block_">When we were building our queries in Power Query Editor, we focused on moving important ID columns
+		into the Facts table, which in our data model is the Sales table. Although the ID columns are great for forming
+		relationships, we will not use them in our reports. To avoid confusion when building reports later, we will simply
+		hide these columns from the report view. We will also look at more specific formatting for some of our date and
+		currency columns. </p>
+	<table class="table_1">
+		<tbody class="calibre46">
+			<tr class="calibre47">
+				<td class="td_12">
+					<ol class="list_">
+						<li class="block_35">In the rail menu on the left side of the Power BI Desktop application, click on the <b
+								class="calibre139">Report </b><img src="images/image137.png" alt="Image" class="calibre140" /> view, if it
+							is not already selected<br class="calibre102" /> </li>
+						<li class="block_32">In the <i class="calibre101">Fields </i>pane on the right of report view, expand the <b
+								class="calibre139">Sales</b> table<br class="calibre102" /> </li>
+					</ol>
+				</td>
+				<td class="td_13">
+					<p class="block_36"><img src="images/image-106.png" alt="Image" class="calibre141" /></p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<ol class="list_">
+		<li value="3" class="block_15">You will notice there are a selection of columns that we would not really use for
+			reporting for example <i class="calibre7">CustomerId</i>, and there are more in the other tables<br
+				class="calibre2" /><br class="calibre2" /><img src="images/image-107.png" alt="Image" class="calibre142" /><br
+				class="calibre2" /> </li>
+		<li class="block_16">In the rail menu click on <b class="calibre6">Model </b><img src="images/image130.png"
+				alt="Image" class="calibre132" /><b class="calibre6"><br class="calibre2" /> </b></li>
+		<li class="block_16">In the <b class="calibre6">Sales</b> table, <b class="calibre6">right click</b> on <b
+				class="calibre6">CustomerId</b> and choose <b class="calibre6">Hide in report view</b> (note you can also click on
+			the <img src="images/image140.png" alt="Image" class="calibre143" /> visible icon when your mouse is positioned over
+			a column in the new model view, the icon will turn to <img src="images/image141.png" alt="Image"
+				class="calibre144" /> hidden)<br class="calibre2" /> </li>
+		<li class="block_16">Repeat this step for:</li>
+	</ol>
+	<ol class="list_1">
+		<li class="block_22"><b class="calibre6">Id</b></li>
+		<li class="block_22"><b class="calibre6">InvoiceId</b></li>
+		<li class="block_22"><b class="calibre6">ProductId</b><br class="calibre2" /> </li>
+	</ol>
+	<ol class="list_">
+		<li value="7" class="block_16">In the <i class="calibre7">Customers</i> table, hide <b
+				class="calibre6">CustomerId</b><br class="calibre2" /> </li>
+		<li class="block_16">In the <i class="calibre7">Products</i> table, hide <b class="calibre6">ProductId</b><br
+				class="calibre2" /> </li>
+		<li class="block_16">In the <i class="calibre7">Purchases </i>table, hide <b class="calibre6">InvoiceId</b><br
+				class="calibre2" /> </li>
+		<li class="block_16">The result should look like this:<br class="calibre2" /><br class="calibre2" /><img
+				src="images/image-108.png" alt="Image" class="calibre145" /><br class="calibre2" /> </li>
+		<li class="block_16">Now that we have tidied up the fields, return to <b class="calibre6">Report</b> <img
+				src="images/image137.png" alt="Image" class="calibre146" /> view and expand the tables in the <i
+				class="calibre7">Fields</i> pane to see the changes<br class="calibre2" /><br class="calibre2" /><img
+				src="images/image143.png" alt="Image" class="calibre147" /><br class="calibre2" /> </li>
+		<li class="block_16">Next, we will add some further precision to our column formatting, to do this we will need to go
+			to data view, click <b class="calibre6">Data</b> <img src="images/image144.png" alt="Image" class="calibre148" /> in
+			the rail menu<br class="calibre2" /> </li>
+		<li class="block_16">In the <i class="calibre7">Fields</i> pane on the right side of the window, expand the <b
+				class="calibre6">Customers</b> table and click on <i class="calibre7">BirthDate</i> <br class="calibre2" /> </li>
+		<li class="block_16">The columns format is currently dd mmmm yyyy which appears as the highlighted data below, with
+			the column selected click on the <b class="calibre6">Format</b> drop down in the <i class="calibre7">Formatting</i>
+			category of the ribbon as shown below<br class="calibre2" /><br class="calibre2" /><img src="images/image-109.png"
+				alt="Image" class="calibre149" /></li>
+		<li class="block_16">Change the date format to <b class="calibre6">(dd/mm/yyyy)</b><br class="calibre2" /> </li>
+		<li class="block_16">Next in the <i class="calibre7">Fields</i> pane, select the <b class="calibre6">Products</b>
+			table and select the <b class="calibre6">UnitCost</b> column<br class="calibre2" /> </li>
+		<li class="block_16">With the column selected, change the format from <i class="calibre7">General</i> to <b
+				class="calibre6">Currency<br class="calibre2" /><br class="calibre2" /></b><img src="images/image146.png"
+				alt="Image" class="calibre150" /><b class="calibre6"><br class="calibre2" /> </b></li>
+		<li class="block_16">Next click on the <b class="calibre6">$</b> <b class="calibre6">drop down</b> to pick a specific
+			currency, then choose <b class="calibre6">£ English (United Kingdom)</b><br class="calibre2" /><br
+				class="calibre2" /><img src="images/image-110.png" alt="Image" class="calibre151" /></li>
+		<li class="block_16">Repeat steps 17 and 18 for the <b class="calibre6">ListPrice</b> column<br class="calibre2" /> 
+		</li>
+		<li class="block_16">Select the <b class="calibre6">GameImageURL</b> column, and in the <i
+				class="calibre7">Properties</i> category of the ribbon, set <b class="calibre6">Data Category</b> to <b
+				class="calibre6">Image URL </b>as shown below<br class="calibre2" /><br class="calibre2" /><img
+				src="images/image148.png" alt="Image" class="calibre152" /><br class="calibre2" /> </li>
+		<li class="block_16">Next, we will format the columns in the <i class="calibre7">Sales </i>table, in the <i
+				class="calibre7">Fields</i> pane click on <b class="calibre6">Sales</b><br class="calibre2" /> </li>
+		<li class="block_16">Select the <b class="calibre6">Quantity</b> column and in the <i class="calibre7">Formatting
+			</i>category of the ribbon click on <b class="calibre6">Comma separated</b> which is the button that looks like this
+			<img src="images/image149.png" alt="Image" class="calibre153" /><span class="calibre154"> next to the % option,
+			</span>which will use a 1,000 separator (which would appear as 1000 without)<br class="calibre2" /> </li>
+		<li class="block_16">By adding the comma separator, the format has changed to a decimal number, decrease the decimal
+			number from 2 to 0<br class="calibre2" /><br class="calibre2" /><img src="images/image-111.png" alt="Image"
+				class="calibre155" /></li>
+		<li class="block_16">Next, using what we have practiced so far, update the format of the following columns in the <i
+				class="calibre7">Sales </i>table:</li>
+	</ol>
+	<ol class="list_1">
+		<li class="block_22">Update <b class="calibre6">SalesAmount</b> to Currency - £ English (United Kingdom)</li>
+		<li class="block_22">Update <b class="calibre6">PurchaseDate</b> to dd/mm/yyyy</li>
+		<li class="block_22">Update <b class="calibre6">ProductCost</b> to 2 decimal places<br class="calibre2" /> </li>
+	</ol>
+	<ol class="list_">
+		<li value="25" class="block_23">That is all our current columns formatted, however we may format some of our new
+			columns later</li>
+	</ol>
+	<p id="id_Toc144885901" class="block_14">Exercise 2 – Create calculated columns</p>
+	<p class="block_">Now that we have investigated our formatting, we now need to start finding the holes in our data. We
+		have been asked to report on sales profit, purchase year, ages and age groups. Although we do not actually have any of
+		this information, we do have some columns that could help us build answers. For example, our sales profit is our sales
+		amount minus our product cost. Other examples are the purchase year which we can get from the purchase date and the
+		age and age groups can be calculated from our customers birth date. To create these new columns, we will use DAX.</p>
+	<ol class="list_">
+		<li class="block_15">To begin, let us calculate our sales profit, in the <i class="calibre7">Sales</i> table, which
+			should be open from the previous exercise, click on the <b class="calibre6">Table tools</b> tab in the ribbon and
+			select <b class="calibre6">New column</b> from the <i class="calibre7">Calculations</i> category as shown below<br
+				class="calibre2" /><br class="calibre2" /><img src="images/image-112.png" alt="Image" class="calibre156" /></li>
+		<li class="block_16">In the formula bar enter <span class="text_12">SalesProfit =
+				Sales[SalesAmount]-Sales[ProductCost]</span> then press <b class="calibre6">Enter<br class="calibre2" /> </b></li>
+		<li class="block_16">Format the new column to have <b class="calibre6">2</b> decimal places in the <b
+				class="calibre6">Column Tools</b> tab of the ribbon<br class="calibre2" /> </li>
+		<li class="block_16">Next, we need our purchase year, in the <i class="calibre7">Sales</i> table, in the <b
+				class="calibre6">Table tools </b>tab of the ribbon click on <b class="calibre6">New column</b> and enter this
+			formula <br class="calibre2" /><span class="text_12">Purchase Year = YEAR(Sales[PurchaseDate])</span><span
+				class="text_13"> then press </span><span class="text_12">Enter</span><b class="calibre6"><br
+					class="calibre2" /></b> </li>
+		<li class="block_16">To work out the financial year of the sale, in the <b class="calibre6">Table tools </b>tab of the
+			ribbon click on <b class="calibre6">New column</b> and enter this formula (or better yet, copy and paste it from
+			this book):<br class="calibre2" /><span class="text_12">Financial Year = VAR fy = IF (MONTH ( Sales[PurchaseDate] )
+				&lt;= 3,</span></li>
+	</ol>
+	<p class="block_37"><span class="calibre154"> VALUE ( FORMAT ( Sales[PurchaseDate], "YY" ) ) - 1,</span></p>
+	<p class="block_37"><span class="calibre154"> VALUE ( FORMAT ( Sales[PurchaseDate], "YY" ) ) )</span></p>
+	<p class="block_37">RETURN</p>
+	<p class="block_26"><span class="text_12"><span class="calibre154"> CONCATENATE ( "FY ", CONCATENATE ( fy, CONCATENATE
+				("/", fy + 1 ) ) )</span></span> <br class="calibre2" />then press <b class="calibre6">Enter<br
+				class="calibre2" /> </b></p>
+	<ol class="list_">
+		<li value="6" class="block_16">Now we will work out our customers ages, select the <b class="calibre6">Customers</b>
+			table from the <i class="calibre7">Fields</i> pane<br class="calibre2" /> </li>
+		<li class="block_16">In the ribbon, in the <b class="calibre6">Table tools</b> tab, click on <b class="calibre6">New
+				column</b><br class="calibre2" /> </li>
+		<li class="block_16">Enter the following into the formula bar <br class="calibre2" /><span class="text_12">Age =
+				Floor( (TODAY()-Customers[BirthDate])/365, 1)</span> then press <b class="calibre6">Enter</b><br
+				class="calibre2" /> </li>
+		<li class="block_16">Now that we know the customers age, we can create another column to add each customer to an age
+			group, click <b class="calibre6">New column</b> once more (from the ribbon)<br class="calibre2" /> </li>
+		<li class="block_16">Enter the following formula (or copy and paste it from this book):<br class="calibre2" /><span
+				class="text_12">Age Group = SWITCH( TRUE(), <br class="calibre2" />[Age] &gt;= 65, "Ages 65 and over", <br
+					class="calibre2" />[Age] &gt;= 50, "Ages 50 TO 65", <br class="calibre2" />[Age] &gt;= 40, "Ages 40 TO 49", <br
+					class="calibre2" />[Age] &gt;= 30, "Ages 30 TO 39", <br class="calibre2" />[Age] &gt;= 18, "Ages 18 TO 29", <br
+					class="calibre2" />[Age] &lt; 18, "Ages under 18" )</span><b class="calibre6"><br class="calibre2" /> </b></li>
+		<li class="block_16">The formula should look like this if you typed it in manually, you can click in the formula and
+			hold <b class="calibre6">Shift</b> then <b class="calibre6">Enter</b> to add return carriage to the formula (it’s
+			not necessary but can help with the formatting)<br class="calibre2" /><br class="calibre2" /><img
+				src="images/image152.png" alt="Image" class="calibre157" /><br class="calibre2" /><br class="calibre2" />Below
+			shows the formula with return carriages<br class="calibre2" /><br class="calibre2" /><img src="images/image153.png"
+				alt="Image" class="calibre158" /><br class="calibre2" /> </li>
+		<li class="block_23">Press <b class="calibre6">Enter</b> to create the column (if you get an error, click on the
+			column heading to access the DAX code again to make changes, remember you can always copy and paste the code from
+			this document as long as you have it in a digital format)</li>
+	</ol>
+	<p id="id_Toc144885902" class="block_14">Exercise 3 – Creating measures</p>
+	<p class="block_">Not all the information we calculate needs to generate a new column, for example the total sales
+		revenue is a sum of our sales amount. In fact, to answer some questions, our calculations may need to involve data
+		from multiple tables. This is where measures come in, allowing us to calculate information from more than one source
+		to achieve a resultant value that can be used in our reports.</p>
+	<ol class="list_">
+		<li class="block_15">We need to work out the total units sold, to do this, select the <b class="calibre6">Sales</b>
+			table from the <i class="calibre7">Fields </i>pane (you may wish to collapse some of the expanded tables to make
+			navigation easier)<br class="calibre2" /> </li>
+		<li class="block_16">In the <b class="calibre6">Table tools</b> tab of the ribbon, click on <b class="calibre6">New
+				measure</b> found in the <i class="calibre7">Calculations</i> category as shown below<br class="calibre2" /><br
+				class="calibre2" /><img src="images/image-113.png" alt="Image" class="calibre159" /></li>
+		<li class="block_16">Enter the following into the formula bar <span class="text_12">Units Sold =
+				SUM(Sales[Quantity])</span><br class="calibre2" /> </li>
+		<li class="block_16">Press <b class="calibre6">Enter</b> on your keyboard and the new measure called <i
+				class="calibre7">Units Sold</i> will appear under the <i class="calibre7">Sales</i> table<br
+				class="calibre2" /><br class="calibre2" /><img src="images/image-114.png"
+				alt="Text, application&#10;&#10;Description automatically generated with medium confidence"
+				class="calibre160" /><br class="calibre2" /> </li>
+		<li class="block_16">To format the measure, select <b class="calibre6">Units Sold </b>from the <i
+				class="calibre7">Sales</i> table and then click on the <b class="calibre6">comma separator </b><img
+				src="images/image156.png" alt="Image" class="calibre161" /><b class="calibre6"> </b>from the <i
+				class="calibre7">Formatting </i>category of the ribbon and set the decimal places to <b class="calibre6">0</b><br
+				class="calibre2" /><br class="calibre2" /><img src="images/image-115.png"
+				alt="Graphical user interface, application&#10;&#10;Description automatically generated" class="calibre162" />
+		</li>
+		<li class="block_16">Next, to create our sales revenue measure, in the ribbon click on <b class="calibre6">New
+				Measure</b> from the <i class="calibre7">Calculations</i> category and enter the following into the formula bar<br
+				class="calibre2" /><span class="text_12">Sales Revenue = Sum(Sales[SalesAmount])</span><br class="calibre2" /> 
+		</li>
+		<li class="block_16">To format the measure, select <b class="calibre6">Sales Revenue</b> from the <i
+				class="calibre7">Sales</i> table and change the type of currency by clicking on the <b class="calibre6">$ drop
+				down</b> and select <b class="calibre6">£ English (United Kingdom)</b> and change the decimal places to <b
+				class="calibre6">0</b><br class="calibre2" /> </li>
+		<li class="block_16">Create the following measures in the <i class="calibre7">Sales</i> table using what you have
+			practiced:</li>
+	</ol>
+	<ol class="list_1">
+		<li class="block_22">Create a Product Cost measure</li>
+	</ol>
+	<ol class="list_2">
+		<li class="block_38">Formula: <span class="text_12">Product Cost = Sum(Sales[ProductCost])</span></li>
+		<li class="block_38">Formatting: Currency type <b class="calibre6">£ English (United Kingdom)</b> with <b
+				class="calibre6">0</b> decimal places</li>
+	</ol>
+	<ol class="list_1">
+		<li value="2" class="block_22">Create a Profit measure</li>
+	</ol>
+	<ol class="list_2">
+		<li class="block_38">Formula: <span class="text_12">Profit = SUM(Sales[SalesProfit])</span></li>
+		<li class="block_38">Formatting: Currency type <b class="calibre6">£ English (United Kingdom)</b> with <b
+				class="calibre6">0</b> decimal places<br class="calibre2" /> </li>
+	</ol>
+	<ol class="list_">
+		<li value="9" class="block_16">Now, switch over to the <b class="calibre6">Customers </b>table by selecting it from
+			the <i class="calibre7">Fields</i> pane<br class="calibre2" /> </li>
+		<li class="block_16">Create a new measure using the formula <span class="text_12">Customer Count =
+				COUNTROWS(Customers)</span><b class="calibre6"><br class="calibre2" /> </b></li>
+		<li class="block_16">Format the measure by selecting <b class="calibre6">Customer Count </b>and click on the <b
+				class="calibre6">comma separator</b> <img src="images/image158.png" alt="Image" class="calibre163" /><br
+				class="calibre2" /> </li>
+		<li class="block_16">Some of the values that we have created are tidier than older values, for example age instead of
+			birthdate so we will use what we practiced earlier and hide some of those columns, in the rail menu, click <b
+				class="calibre6">Model</b> <img src="images/image130.png" alt="Image" class="calibre164" /><br
+				class="calibre2" /> </li>
+		<li class="block_16">Resize the tables if required to show all the values then <b class="calibre6">right click</b> on
+			and click <b class="calibre6">Hide in report view</b> for the following columns:<br class="calibre2" /><br
+				class="calibre2" />Customers (table)</li>
+	</ol>
+	<ul class="list_3">
+		<li class="block_39">BirthDate</li>
+	</ul>
+	<p class="block_40">Sales (table)</p>
+	<ul class="list_3">
+		<li class="block_41">ProductCost (be careful not to select <i class="calibre7">Product Cost </i>which is our measure)
+		</li>
+		<li class="block_22">PurchaseDate</li>
+		<li class="block_22">Quantity</li>
+		<li class="block_22">SalesAmount</li>
+		<li class="block_22">SalesProfit</li>
+	</ul>
+	<p class="block_42"> </p>
+	<p class="block_26">Products (table)</p>
+	<ul class="list_3">
+		<li class="block_22">ListPrice</li>
+		<li class="block_22">MinimumAge</li>
+		<li class="block_22">UnitCost<br class="calibre2" /> </li>
+	</ul>
+	<ol class="list_">
+		<li value="14" class="block_24">Below is a summary of these changes to cross check against your work</li>
+	</ol>
+	<p class="block_40"><img src="images/image-116.png" alt="Image" class="calibre165" /></p>
+	<p id="id_Toc144885903" class="block_14">Exercise 4 - Geographical data and lookup tables</p>
+	<p class="block_">Now that we have some new columns and measures to answer some of our grain statements, we have been
+		asked to add more regional data to our reports. This includes which country the order is going to and what sales
+		region is the customer based in (northern, central or southern which are boundaries devised by House Rules Board Games
+		and are not a universally known geography). To accomplish this, we can use a lookup table provided by our HR team,
+		which we will add to our data model. A preview of the lookup table is shown on the following page.<br
+			class="calibre2" /><br class="calibre2" /><img src="images/image-117.png" alt="Image" class="calibre166" /></p>
+	<ol class="list_">
+		<li class="block_15">From <b class="calibre6">Model</b> <img src="images/image130.png" alt="Image"
+				class="calibre167" /> view, in the <i class="calibre7">Home </i>tab in the ribbon, select <b
+				class="calibre6">Excel workbook</b> from the <i class="calibre7">Data</i> category<br class="calibre2" /> </li>
+		<li class="block_16">In <i class="calibre7">File Explorer</i>,<i class="calibre7"> </i>locate your training pack and
+			open the folder <b class="calibre6">Labs</b> &gt; <b class="calibre6">Data Sources</b> and select <b
+				class="calibre6">UK Sales Regions</b> and click <b class="calibre6">Open</b><br class="calibre2" /> </li>
+		<li class="block_16">Select the <b class="calibre6">UKSalesRegions</b> table then click <b
+				class="calibre6">Load</b><br class="calibre2" /> </li>
+		<li class="block_16">Click <b class="calibre6">Manage relationship</b> in the ribbon <br class="calibre2" /> </li>
+		<li class="block_16">If a relationship is not automatically created between the <i
+				class="calibre7">UKRegionalSales</i> and the <i class="calibre7">Customers</i> table, click <b
+				class="calibre6">Autodetect… </b>then <b class="calibre6">Close</b><br class="calibre2" /> </li>
+		<li class="block_16">Select the new relationship <i class="calibre7">Customers(County)</i> to <i
+				class="calibre7">UKSalesRegions(CountyName)</i> and click <b class="calibre6">Edit</b><br class="calibre2" /> 
+		</li>
+		<li class="block_16">Set the <i class="calibre7">Cross filter direction </i>to <b class="calibre6">Both</b> and click
+			<b class="calibre6">OK</b><br class="calibre2" /><br class="calibre2" /><img src="images/image-118.png" alt="Image"
+				class="calibre168" /><br class="calibre2" /> </li>
+		<li class="block_16">Click <b class="calibre6">Close</b> and optionally reposition the tables in your data model (Ctrl
+			+ left click to select more than one table to bulk drag)<br class="calibre2" /> </li>
+		<li class="block_16">Navigate to <b class="calibre6">Data </b><img src="images/image144.png" alt="Image"
+				class="calibre169" /><b class="calibre6"> </b>view using the rail menu <br class="calibre2" /> </li>
+		<li class="block_16">In the <i class="calibre7">Customers</i> table, click <b class="calibre6">New Column</b> in the
+			<i class="calibre7">Home</i> tab of the ribbon<br class="calibre2" /> </li>
+		<li class="block_16">Enter the following formula <span class="text_12">Country =
+				RELATED(UKSalesRegions[Country])</span><br class="calibre2" /> </li>
+		<li class="block_16">Next, click <b class="calibre6">New Column</b> in the <i class="calibre7">Home</i> tab of the
+			ribbon<br class="calibre2" /> </li>
+		<li class="block_16">Enter the following formula <span class="text_12">Sales Region =
+				RELATED(UKSalesRegions[SalesRegion])</span><br class="calibre2" /> </li>
+		<li class="block_16">You will now have some new geographical data for your customers, we now need to format our
+			geographical columns<br class="calibre2" /> </li>
+		<li class="block_16">Select the <b class="calibre6">Postcode</b> column and then in the ribbon select the <b
+				class="calibre6">Column tools</b> tab and for <i class="calibre7">Data category</i> choose <b
+				class="calibre6">Postal code<br class="calibre2" /><br class="calibre2" /></b><img src="images/image162.png"
+				alt="Image" class="calibre170" /><br class="calibre2" /> </li>
+		<li class="block_16">Repeat this step for <b class="calibre6">County</b>, adding the data category <b
+				class="calibre6">County</b> <br class="calibre2" /> </li>
+		<li class="block_16">Also repeat this step for <b class="calibre6">Country</b>, adding the data category <b
+				class="calibre6">Country</b><br class="calibre2" /> </li>
+		<li class="block_16">Often when used on a map, some locations will be plotted in the wrong countries e.g. Athens,
+			Greece vs Athens, Georgia, USA so to disambiguate the data we will create a final column by clicking <b
+				class="calibre6">New column</b> from the <i class="calibre7">Column tools</i> tab<br class="calibre2" /> </li>
+		<li class="block_16">Enter the formula <span class="text_12">Location = Customers[County] &amp; ", " &amp;
+				Customers[Country]</span><br class="calibre2" /> </li>
+		<li class="block_16">Press <b class="calibre6">Enter</b> on your keyboard then format the new <b
+				class="calibre6">Location</b> column by selecting it and setting the <i class="calibre7">Data Category</i> to <b
+				class="calibre6">Place</b><br class="calibre2" /> </li>
+		<li class="block_16">Lastly, we will hide the lookup table in report view as we now have the essential data in our
+			Customers table, to do this click on <b class="calibre6">Model </b><img src="images/image130.png" alt="Image"
+				class="calibre167" /><b class="calibre6"> </b>in the rail menu<br class="calibre2" /> </li>
+		<li class="block_16">Click on the <b class="calibre6">ellipsis (…)</b> at the top right of the <i
+				class="calibre7">UKSalesRegions</i> table and choose <b class="calibre6">Hide in report view</b> (or click on the
+			<img src="images/image140.png" alt="Image" class="calibre143" /> icon at the top right of the table)<br
+				class="calibre2" /><br class="calibre2" /><img src="images/image-119.png" alt="Image" class="calibre171" /><br
+				class="calibre2" /> </li>
+		<li class="block_23">Click <b class="calibre6">Save</b> at the top left of the application</li>
+	</ol>
+	<p id="id_Toc144885904" class="block_14">Exercise 5 – Create a dimensional hierarchy</p>
+	<p class="block_">We will finish up by adding a quick dimensional hierarchy to our data model. They allow us to use our
+		columns to create a drill down through our data. We have a column for Product, Subcategory and Category which could be
+		turned into a hierarchy to allow us to drill down through our product catalog.</p>
+	<ol class="list_">
+		<li class="block_15">Click on <b class="calibre6">Data </b><img src="images/image144.png" alt="Image"
+				class="calibre169" /><b class="calibre6"> </b>view in the rail menu<br class="calibre2" /> </li>
+		<li class="block_16">Expand the <b class="calibre6">Products</b> table from the <i class="calibre7">Field </i>pane<br
+				class="calibre2" /> </li>
+		<li class="block_16">To create the hierarchy, place your mouse cursor over the <i class="calibre7">Category</i> field,
+			and then click on the <b class="calibre6">ellipsis (…)</b> then choose <b class="calibre6">Create hierarchy</b><br
+				class="calibre2" /><br class="calibre2" /><img src="images/image-120.png"
+				alt="Graphical user interface, text, application&#10;&#10;Description automatically generated"
+				class="calibre172" /></li>
+		<li class="block_16">A new hierarchy is created called <i class="calibre7">Category Hierarchy</i><br
+				class="calibre2" /> </li>
+		<li class="block_16">Move your mouse cursor over the <i class="calibre7">Subcategory </i>field and click on the <b
+				class="calibre6">ellipsis (…)</b>, select <b class="calibre6">Add to hierarchy</b> &gt; <b
+				class="calibre6">Category Hierarchy</b><br class="calibre2" /> </li>
+		<li class="block_16">Repeat the previous step for the <i class="calibre7">Product</i> field<br class="calibre2" /> 
+		</li>
+		<li class="block_16"><b class="calibre6">Right click</b> on the hierarchy heading and choose <b
+				class="calibre6">Rename</b><br class="calibre2" /> </li>
+		<li class="block_16">Name the hierarchy <b class="calibre6">Product Category </b>then press <b
+				class="calibre6">Enter</b><br class="calibre2" /><br class="calibre2" /><img src="images/image-121.png"
+				alt="A picture containing application&#10;&#10;Description automatically generated" class="calibre173" /><br
+				class="calibre2" /> </li>
+		<li class="block_23">Now click <b class="calibre6">Save</b> once more at the top left of the application and you are
+			done!</li>
+	</ol>
+</body>
+</html>

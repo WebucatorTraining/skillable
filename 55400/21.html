@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8'?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+	<title>Module 7: Labs</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" type="text/css" href="stylesheet.css" />
+</head>
+<body class="calibre">
+	<p id="id_Err2" class="block_14">Issues with the region format for date columns</p>
+	<p class="block_">In Lab 3 Exercise 3 – While in the Power Query Editor, students using computers that have a regional
+		date format that differs to dd/mm/yyyy may experience errors appearing in date columns when applying formatting.</p>
+	<p id="id_Toc144885918" class="block_30">Error</p>
+	<p class="block_">When applying a Date format to the FirstPurchaseDate, LastPurchaseDate and BirthDate columns, errors
+		appear where specific data values were. This issue occurs when the original date format dd/mm/yyyy conflicts with the
+		regional settings of Power BI where a student is using a different format e.g. mm/dd/yyyy. The error occurs when a
+		value of more that 12 is present in the first two digits e.g. 25/12/2020 which is fine for dd/mm/yyyy but does not
+		work for mm/dd/yyyy.</p>
+	<p class="block_"><img src="images/image-169.png" alt="Table&#10;&#10;Description automatically generated"
+			class="calibre248" /></p>
+	<p class="block_"><img src="images/image245.png" alt="Image" class="calibre249" /></p>
+	<p id="id_Toc144885919" class="block_30">Solution</p>
+	<p class="block_">This issue cannot be resolved in Power Query Editor. To resolve this switch to the Power BI Desktop
+		window and select the <b class="calibre6">File</b> tab in the ribbon and choose <b class="calibre6">Options and
+			settings</b> &gt; <b class="calibre6">Options</b>. Under the heading <i class="calibre7">CURRENT FILE</i> click on
+		<b class="calibre6">Regional Settings</b> (there is an option for regional settings under the <i
+			class="calibre7">GLOBAL</i> heading so be careful to pick the right option).</p>
+	<table class="table_3">
+		<tbody class="calibre46">
+			<tr class="calibre47">
+				<td class="td_20">
+					<p class="block_45"><img src="images/image-170.png" alt="Image" class="calibre250" /></p>
+				</td>
+				<td class="td_21">
+					<p class="block_45">In regional settings, set the value to <b class="calibre139">English (United Kingdom)
+						</b>and once set, click <b class="calibre139">OK</b> (if you see two drop down fields rather than one, you are
+						in the wrong regional settings menu)</p>
+					<p class="block_45"><img src="images/image-171.png" alt="Image" class="calibre251" /></p>
+					<p class="block_4"> </p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p class="block_">A yellow banner will appear at the top of the Power BI Desktop, choose <b class="calibre6">Apply
+			changes</b> and the format will be amended for this current file. This can take some time.</p>
+	<p class="block_"><img src="images/image248.png" alt="Image" class="calibre252" /></p>
+	<p class="block_">Note that you have only changed this setting for the current PBIX file, this setting will not impact
+		your other Power BI project files. Once the changes have been applied, return to Power Query Editor.</p>
+	<p id="id_Toc144885920" class="block_30">Return to the lab</p>
+	<p class="block_">Click <a href="index_split_009.html#id_Ret2" class="text_7">here</a> to return to where you were in
+		the lab.</p>
+	<p class="block_1"> </p>
+
+</body>
+</html>
