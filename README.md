@@ -5,7 +5,7 @@ Skillable Instruction Sets
 # Creating instructions for Skillable for Combined Knowledge Courses
 ## Create the virtual environment.
 1. Open the terminal
-2. Run `python -m venv .venv`©
+2. Run `python -m venv .venv`
 3. Activate the virtual environment:
    ```
    # Mac:
