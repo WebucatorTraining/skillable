@@ -87,6 +87,7 @@ def build_and_replace_nav_items(markdown_content):
         prefix = prefix[2:]
         # Create a slug for the navigation link
         slug = "-".join(prefix.lower().split()) + "-" + "-".join(title.lower().split())
+        slug = slug.replace("-:-", "-")
         nav_item = f"> 1. [{prefix}{title}](#{slug})"
         nav_items.append(nav_item)
 
@@ -168,13 +169,16 @@ required to use the app launcher to navigate there.
 
     # Always add "===" before "Exercise \d" lines
     markdown_content = re.sub(
-        r"^(Exercise \d)", r"===\n\1", markdown_content, flags=re.MULTILINE
+        r"^(Exercise \d)",
+        r"===\n[Home](#home)\n\1",
+        markdown_content,
+        flags=re.MULTILINE,
     )
     markdown_content = re.sub(
-        r"^(Lab \d)", r"===\n\1", markdown_content, flags=re.MULTILINE
+        r"^(Lab \d)", r"===\n[Home](#home)\n\1", markdown_content, flags=re.MULTILINE
     )
     markdown_content = re.sub(
-        r"^(Lab [A-Z])", r"===\n\1", markdown_content, flags=re.MULTILINE
+        r"^(Lab [A-Z])", r"===\n[Home](#home)\n\1", markdown_content, flags=re.MULTILINE
     )
 
     # Then, replace any instance of "===\n===" with "==="
