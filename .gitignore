@@ -1,0 +1,12 @@
+.venv
+**/epub/*.html
+**/epub/META-INF
+**/epub/content.opf
+**/epub/cover.jpeg
+**/epub/*.css
+**/epub/*.xhtml
+**/epub/*.ncx
+mimetype
+ck-zips
+epubs/*.epub
+epubs/*.zip
