@@ -135,7 +135,7 @@ def convert_html_to_md(input_html_file):
 Please note the following differences between this virtual desktop and the course manual:
 
 1. Your lab files can be found on **C:\\Labs**.
-2. We wills skip labs 0 and 1 in the manual as they relate to setting up the environment. Your environment is already
+2. We will skip labs 0 and 1 in the manual as they relate to setting up the environment. Your environment is already
 set up.
 
 Proceed to Lab 2 to begin your first exercise, noting that Power BI is already open in your browser, you are not
