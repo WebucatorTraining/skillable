@@ -88,6 +88,8 @@ def build_and_replace_nav_items(markdown_content):
         # Create a slug for the navigation link
         slug = "-".join(prefix.lower().split()) + "-" + "-".join(title.lower().split())
         slug = slug.replace("-:-", "-")
+        slug = slug.replace("[", "")
+        slug = slug.replace("]", "")
         nav_item = f"> 1. [{prefix}{title}](#{slug})"
         nav_items.append(nav_item)
 
@@ -191,7 +193,7 @@ required to use the app launcher to navigate there.
 
     markdown_content = markdown_content.replace(
         "(images/",
-        f"(https://raw.githubusercontent.com/WebucatorTraining/skillable/main/{course_num}/images/",
+        f"(https://raw.githubusercontent.com/WebucatorTraining/skillable/main/{course_num}/epub/images/",
     )
 
     markdown_content = markdown_content.replace("\nLab ", "\n# Lab ")
