@@ -160,7 +160,24 @@ required to use the app launcher to navigate there.
         print("Failed to read the file with supported encodings.")
         return
 
-    markdown_content = preamble + md(html_content)
+    # Initialize BeautifulSoup
+    soup = BeautifulSoup(html_content, "html.parser")
+
+    # Remove all <body> tags
+    for body_tag in soup.find_all("body"):
+        body_tag.unwrap()
+
+    # Convert specific <p> tags to Markdown headers
+    for p_tag in soup.find_all("p"):
+        if re.match(r"(Exercise \d+|Lab [A-Z0-9]+)", p_tag.text.strip()):
+            # Create a new <h1> tag
+            h1_tag = soup.new_tag("h1")
+            # Transfer the text from the <p> tag to the new <h1> tag
+            h1_tag.string = p_tag.string
+            # Replace the <p> tag with the new <h1> tag in the soup object
+            p_tag.replace_with(h1_tag)
+
+    markdown_content = preamble + str(soup)
     # Replace lines that contain only whitespace with a newline character
     markdown_content = re.sub(
         r"^\s+$", "\n", markdown_content, flags=re.MULTILINE
@@ -169,18 +186,23 @@ required to use the app launcher to navigate there.
     # Then, replace three or more consecutive newlines with two newlines
     markdown_content = re.sub(r"\n{3,}", "\n\n", markdown_content)
 
+    # Replace h1 tags with markdown
+    markdown_content = markdown_content.replace("<h1>", "# ")
+    markdown_content = markdown_content.replace("</h1>", "")
+
     # Always add "===" before "Exercise \d" lines
     markdown_content = re.sub(
-        r"^(Exercise \d)",
+        r"^(# Exercise \d)",
         r"===\n[Home](#home)\n\1",
         markdown_content,
         flags=re.MULTILINE,
     )
+
     markdown_content = re.sub(
-        r"^(Lab \d)", r"===\n[Home](#home)\n\1", markdown_content, flags=re.MULTILINE
-    )
-    markdown_content = re.sub(
-        r"^(Lab [A-Z])", r"===\n[Home](#home)\n\1", markdown_content, flags=re.MULTILINE
+        r"^(# Lab [A-Z0-9])",
+        r"===\n[Home](#home)\n\1",
+        markdown_content,
+        flags=re.MULTILINE,
     )
 
     # Then, replace any instance of "===\n===" with "==="
@@ -192,12 +214,9 @@ required to use the app launcher to navigate there.
     )
 
     markdown_content = markdown_content.replace(
-        "(images/",
-        f"(https://raw.githubusercontent.com/WebucatorTraining/skillable/main/{course_num}/epub/images/",
+        'src="images/',
+        f'src="https://raw.githubusercontent.com/WebucatorTraining/skillable/main/{course_num}/epub/images/',
     )
-
-    markdown_content = markdown_content.replace("\nLab ", "\n# Lab ")
-    markdown_content = markdown_content.replace("\nExercise ", "\n# Exercise ")
 
     markdown_content = build_and_replace_nav_items(markdown_content)
 
@@ -282,7 +301,7 @@ def should_include_file(html_content):
         for child in first_p.children:
             if isinstance(child, NavigableString) and child.strip().startswith("Lab 2"):
                 return True
-            if isinstance(child, NavigableString) and child.strip().startswith("Lab A"):
+            if isinstance(child, NavigableString) and child.strip().startswith("Lab B"):
                 return True
     return False
 
