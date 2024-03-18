@@ -173,7 +173,7 @@ required to use the app launcher to navigate there.
             # Create a new <h1> tag
             h1_tag = soup.new_tag("h1")
             # Transfer the text from the <p> tag to the new <h1> tag
-            h1_tag.string = p_tag.string
+            h1_tag.string = p_tag.text.strip()
             # Replace the <p> tag with the new <h1> tag in the soup object
             p_tag.replace_with(h1_tag)
 
